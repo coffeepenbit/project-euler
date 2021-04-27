@@ -7,15 +7,18 @@
  */
 
 #include <stdio.h>
+#include "problem1.h"
 
-int main() {
+int problem1_solution() {
   int sum = 0;
+  int up_to = 1000;
+  int multiple1 = 3;
+  int multiple2 = 5;
 
-  for ( int i = 1; i < 1000; ++i ) {
-    if ( (i%3 == 0) || ( i%5 == 0) ) {
+  for ( int i = 1; i < up_to; ++i ) {
+    if ( (i%multiple1 == 0) || ( i%multiple2 == 0) ) {
       sum += i;
     }
   }
-  printf("Soluion is %d", sum);
-  return 0;
+  return sum;
 }

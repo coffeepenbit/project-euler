@@ -13,8 +13,9 @@
  */
 
 #include <stdio.h>
+#include "problem2.h"
 
-int main() {
+int problem2_solution() {
   int i = 1;
   int j = 2;
   int j_old = 2;
@@ -28,6 +29,5 @@ int main() {
     j = i + j;
     i = j_old;
   }
-  printf("Sum of even terms: %d", sum);
-  return 0;
+  return sum;
 }
