@@ -19,7 +19,7 @@ int problem3_solution() {
       printf("checking %ld", i);
     }
     if ( num%i == 0 ) {
-      is_prime_number = true;
+      /* is_prime_number = true; */
       printf("checking if %ld is a prime number\n", i);
       for ( long j = 2; j < i; ++j) {
         if ( i%j == 0 ) {
@@ -36,4 +36,15 @@ int problem3_solution() {
   }
   printf("Done");
   return 0;
+}
+
+bool is_prime_number(long num_to_test) {
+  bool prime = true;
+  for ( long i = 2; i < num_to_test; ++i) {
+    if ( num_to_test%i == 0 ) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
 }
