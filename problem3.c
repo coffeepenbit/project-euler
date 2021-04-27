@@ -8,42 +8,41 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <math.h>
 #include "problem3.h"
 
-int problem3_solution() {
-  long num = 600851475143;
-  bool is_prime_number = false;
+int problem3_solution(unsigned long num) {
+  long largest_prime = num;
 
-  for ( long i = 600851475142; i > 1; --i ) {
-    if ( i%1000 == 0 ) {
-      printf("checking %ld", i);
+  for ( long i = ceil(num/2.0); i > 1; --i ) {
+    // NOTE: A prime factor is a prime number that is a factor of a number
+    if ( (num%i == 0) && (is_prime_number(i)) ) {
+      largest_prime = i;
+      break;
     }
-    if ( num%i == 0 ) {
-      /* is_prime_number = true; */
-      printf("checking if %ld is a prime number\n", i);
-      for ( long j = 2; j < i; ++j) {
-        if ( i%j == 0 ) {
-          printf("%ld is not a prime number\n", i);
-          is_prime_number = false;
+  }
+  return largest_prime;
+}
+
+bool is_prime_number(unsigned long num_to_test) {
+  bool prime;
+  float sqrt_n = sqrt(num_to_test);
+  long i = 1;
+
+  if ((num_to_test == 1) || (num_to_test == 2) || (num_to_test == 3)) {
+    prime = true;
+  } else if ((num_to_test%2 == 0) || (num_to_test%3 == 0)) {
+    prime = false;
+  } else {
+    prime = true;
+    while (((6*i - 1) <= sqrt_n) && prime == true) {
+      for ( int k = -1; k <= 4; ++k ) {
+        if (num_to_test%(6*i + k) == 0) {
+          prime = false;
           break;
         }
       }
-      if ( is_prime_number ) {
-        printf("%ld is the largest prime number of %ld", i, num);
-        break;
-      }
-    }
-  }
-  printf("Done");
-  return 0;
-}
-
-bool is_prime_number(long num_to_test) {
-  bool prime = true;
-  for ( long i = 2; i < num_to_test; ++i) {
-    if ( num_to_test%i == 0 ) {
-      prime = false;
-      break;
+      i += 1;
     }
   }
   return prime;
