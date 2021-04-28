@@ -10,8 +10,22 @@
  *
  */
 
+#include <stdbool.h>
 #include "problem5.h"
 
 int problem5_solution(int div_min, int div_max) {
-  return 0;
+  bool divisible = false;
+  int num = div_max;
+  while (!divisible) {
+    for (int i = div_min; i <= div_max; ++i) {
+      if (num%i != 0) {
+        num += 1;
+        break;
+      } else if (i == div_max) {
+        divisible = true;
+      }
+    }
+
+  }
+  return num;
 }
