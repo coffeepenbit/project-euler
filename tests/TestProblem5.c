@@ -1,0 +1,15 @@
+#include "unity.h"
+#include "problem5.h"
+
+void test_problem5_solution(void) {
+  TEST_ASSERT_EQUAL_MESSAGE(2, problem5_solution(1, 2), "Input: 1, 2");
+}
+
+void setUp (void) {}
+void tearDown (void) {}
+
+int main(void) {
+  UNITY_BEGIN();
+  RUN_TEST(test_problem5_solution);
+  return UNITY_END();
+}

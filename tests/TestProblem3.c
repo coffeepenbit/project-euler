@@ -1,22 +1,6 @@
 #include <stdbool.h>
-#include <stdio.h>
-#include <time.h>
-#include <unistd.h>
 #include "unity.h"
-#include "problem1.h"
-#include "problem2.h"
 #include "problem3.h"
-
-clock_t t_begin, t_end;
-double t_spent = 0.0;
-
-void test_problem1_solution(void) {
-  TEST_ASSERT_EQUAL(233168, problem1_solution());
-}
-
-void test_problem2_solution(void) {
-  TEST_ASSERT_EQUAL(4613732, problem2_solution());
-}
 
 void test_problem3_solution(void) {
   TEST_ASSERT_EQUAL(2, problem3_solution(4));
@@ -47,19 +31,12 @@ void test_problem3_is_prime_number(void) {
   TEST_ASSERT_EQUAL(false, is_prime_number(35));
 }
 
-void setUp (void) {
-  t_begin = clock();
-}
-void tearDown (void) {
-  t_end = clock();
-  t_spent += 1.0*(t_end - t_begin) / CLOCKS_PER_SEC;
-  printf("Time spent: %e\n", t_spent);
-}
+
+void setUp(void) {}
+void tearDown(void) {}
 
 int main(void) {
   UNITY_BEGIN();
-  RUN_TEST(test_problem1_solution);
-  RUN_TEST(test_problem2_solution);
   RUN_TEST(test_problem3_solution);
   RUN_TEST(test_problem3_is_prime_number);
   return UNITY_END();

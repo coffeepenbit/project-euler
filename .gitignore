@@ -1,6 +1,2 @@
-*
-!.gitignore
-!README.md
-!*.c
-!*.h
-!Makefile
+*.exe
+.#*
