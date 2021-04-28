@@ -3,4 +3,8 @@ problems=problem1.c \
 		 problem2.c \
          problem3.c
 
-TestProblems: TestProblems.c unity.c $(problems)
+# TODO: breakup this into separate problems
+TestProblems: TestProblems.c unity.c $(problems) -lm
+
+TestProblem%: TestProblem%.c unity.c problem%.c
+	$(CC) -o $@ $^ -lm
