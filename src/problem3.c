@@ -29,9 +29,9 @@ bool is_prime_number(unsigned long num_to_test) {
   float sqrt_n = sqrt(num_to_test);
   long i = 1;
 
-  if ((num_to_test == 1) || (num_to_test == 2) || (num_to_test == 3)) {
+  if ((num_to_test == 2) || (num_to_test == 3)) {
     prime = true;
-  } else if ((num_to_test%2 == 0) || (num_to_test%3 == 0)) {
+  } else if ((num_to_test == 1) || (num_to_test%2 == 0) || (num_to_test%3 == 0)) {
     prime = false;
   } else {
     prime = true;
