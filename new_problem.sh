@@ -29,12 +29,12 @@ problem_h_path="$h_dir/problem$1.h"
 if [ ! -f $problem_h_path ]; then
     echo "Creating $problem_h_path"
     touch $problem_h_path
-    echo "#ifndef PROBLEM$1_H_INCLUDED"
-    echo "#define PROBLEM$1_H_INCLUDED"
-    echo ""
-    echo "int problem$1_solution(void);" > $problem_h_path
-    echo ""
-    echo "#endif"
+    echo "#ifndef PROBLEM$1_H_INCLUDED" > $problem_h_path
+    echo "#define PROBLEM$1_H_INCLUDED" >> $problem_h_path
+    echo "" >> $problem_h_path
+    echo "int problem$1_solution(void);" >> $problem_h_path
+    echo "" >> $problem_h_path
+    echo "#endif" >> $problem_h_path
 else
     echo "$problem_h_path already exists."
 fi
