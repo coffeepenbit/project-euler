@@ -7,9 +7,7 @@ void test_problem3_solution(void) {
   TEST_ASSERT_EQUAL(3, problem3_solution(6));
   TEST_ASSERT_EQUAL(7, problem3_solution(7));
   TEST_ASSERT_EQUAL(13, problem3_solution(13));
-  printf("Input: 5\n");
   TEST_ASSERT_EQUAL(5, problem3_solution(25));
-  printf("Input: 7\n");
   TEST_ASSERT_EQUAL(7, problem3_solution(70));
   TEST_ASSERT_EQUAL(5, problem3_solution(1000));
   TEST_ASSERT_EQUAL(5, problem3_solution(10000));
@@ -21,6 +19,7 @@ void test_problem3_solution(void) {
 }
 
 void test_problem3_is_prime_number(void) {
+  // FIXME: 1 is not considered a prime number
   TEST_ASSERT_EQUAL(true, is_prime_number(1));
   TEST_ASSERT_EQUAL(true, is_prime_number(2));
   TEST_ASSERT_EQUAL(true, is_prime_number(3));

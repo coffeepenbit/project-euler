@@ -4,6 +4,7 @@ if [[ -z "$1" ]]; then
 fi
 
 src_dir=src
+h_dir=include
 test_dir=tests
 
 problem_c_path="$src_dir/problem$1.c"
@@ -24,11 +25,16 @@ else
     echo "$problem_c_path already exists."
 fi
 
-problem_h_path="$src_dir/problem$1.h"
+problem_h_path="$h_dir/problem$1.h"
 if [ ! -f $problem_h_path ]; then
     echo "Creating $problem_h_path"
     touch $problem_h_path
+    echo "#ifndef PROBLEM$1_H_INCLUDED"
+    echo "#define PROBLEM$1_H_INCLUDED"
+    echo ""
     echo "int problem$1_solution(void);" > $problem_h_path
+    echo ""
+    echo "#endif"
 else
     echo "$problem_h_path already exists."
 fi
@@ -40,7 +46,7 @@ if [ ! -f $testproblem_path ]; then
     echo "#include \"unity.h\"" > $testproblem_path
     echo "#include \"problem$1.h\"" >> $testproblem_path
     echo "" >> $testproblem_path
-    echo "void test_problem5_solution(void) {" >> $testproblem_path
+    echo "void test_problem$1_solution(void) {" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "}" >> $testproblem_path
     echo "" >> $testproblem_path
