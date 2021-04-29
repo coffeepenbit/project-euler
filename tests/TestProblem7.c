@@ -2,7 +2,7 @@
 #include "problem7.h"
 
 void test_problem7_solution(void) {
-  TEST_ASSERT_EQUAL(104743, problem7_solution);
+  TEST_ASSERT_EQUAL(104743, problem7_solution());
 }
 
 void test_problem7_nth_prime(void) {
