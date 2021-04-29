@@ -6,7 +6,6 @@
  * that the 6th prime is 13.
  *
  * What is the 10001st prime number?
- *
  */
 
 #include "problem3.h"
@@ -16,7 +15,6 @@ int problem7_solution() {
   return nth_prime(10001);
 }
 
-// FIXME: Not fully implemented yet
 int nth_prime(int nth_prime_ind) {
   int ith_prime_ind = 0;
   int number = 1;
