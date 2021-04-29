@@ -3,17 +3,10 @@ if [[ -z "$1" ]]; then
     exit 1
 fi
 
-new_dir=problems/problem$1
-tests=tests
+src_dir=src
+test_dir=tests
 
-if [ ! -d $new_dir ]; then
-    echo "Creating $new_dir"
-    mkdir $new_dir
-else
-    echo "$new_dir already exists."
-fi
-
-problem_c_path="$new_dir/problem$1.c"
+problem_c_path="$src_dir/problem$1.c"
 if [ ! -f $problem_c_path ]; then
     echo "Creating $problem_c_path"
     touch $problem_c_path
@@ -31,7 +24,7 @@ else
     echo "$problem_c_path already exists."
 fi
 
-problem_h_path="$new_dir/problem$1.h"
+problem_h_path="$src_dir/problem$1.h"
 if [ ! -f $problem_h_path ]; then
     echo "Creating $problem_h_path"
     touch $problem_h_path
@@ -40,7 +33,7 @@ else
     echo "$problem_h_path already exists."
 fi
 
-testproblem_path="$tests/TestProblem$1.c"
+testproblem_path="$test_dir/TestProblem$1.c"
 if [ ! -f $testproblem_path ]; then
     echo "Creating $testproblem_path"
     touch $testproblem_path
