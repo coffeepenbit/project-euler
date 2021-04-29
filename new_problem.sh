@@ -51,6 +51,9 @@ if [ ! -f $testproblem_path ]; then
     echo "" >> $testproblem_path
     echo "}" >> $testproblem_path
     echo "" >> $testproblem_path
+    echo "void setUp(void) {}" >> $testproblem_path
+    echo "void tearDown(void) {}" >> $testproblem_path
+    echo "" >> $testproblem_path
     echo "int main(void) {" >> $testproblem_path
     echo "  UNITY_BEGIN();" >> $testproblem_path
     echo "  RUN_TEST(test_problem$1_solution);" >> $testproblem_path

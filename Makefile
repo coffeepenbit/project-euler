@@ -15,3 +15,6 @@ TestProblem4: ./tests/TestProblem4.c ./tests/unity.c ./problems/problem4/problem
 
 TestProblem5: ./tests/TestProblem5.c ./tests/unity.c ./problems/problem5/problem5.c
 	$(CC) -o TestProblem5 ./tests/TestProblem5.c ./tests/unity.c ./problems/problem5/problem5.c -lm -I ./problems/problem5
+
+TestProblem6: ./tests/TestProblem6.c ./tests/unity.c ./problems/problem6/problem6.c
+	$(CC) -o TestProblem6 ./tests/TestProblem6.c ./tests/unity.c ./problems/problem6/problem6.c -lm -I ./problems/problem6
