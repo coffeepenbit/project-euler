@@ -72,22 +72,26 @@ int largest_product_subnumber(char input[],
   int *moving_window = malloc(subnumber_ndigits * sizeof(int));
   long moving_window_product = 1;
   long largest_product = 1;
+  int largest_product_window[subnumber_ndigits];
 
   printf("length_of_input: %d\n", length_of_input);
+  printf("subnumber_ndigits: %d\n", subnumber_ndigits);
   // printf("Input: %s\n", input);
   for (int i = 0; i < length_of_input - subnumber_ndigits + 1; ++i) {
     for (int j = 0; j < subnumber_ndigits; ++j) {
       moving_window[j] = input[i + j] - '0';
     }
-    // printf("subnumber_ndigits: %d\n", subnumber_ndigits);
+
     moving_window_product = array_elem_product(moving_window, subnumber_ndigits);
     if (moving_window_product > largest_product) {
       largest_product = moving_window_product;
-    }
+        for (int i = 0; i < subnumber_ndigits; ++i) {
+          largest_product_window[i] = moving_window[i];
+        }
     // printf("moving_window: %d %d %d %d\n", moving_window[0], moving_window[1], moving_window[2], moving_window[3]);
     // printf("moving_window_product: %d\n", moving_window_product);
+    }
   }
-
   // get substring from i to i + 12 inclusivenn
   // convert substring to int array
   //
@@ -95,6 +99,11 @@ int largest_product_subnumber(char input[],
   //
   // printf("returning\n");
   /* return array_elem_product(moving_window, subnumber_ndigits); */
+  printf("largest_product_window: ");
+  for (int i = 0; i < subnumber_ndigits; ++i) {
+    printf("%d ", largest_product_window[i]);
+  }
+  printf("\n");
   return largest_product;
 }
 
