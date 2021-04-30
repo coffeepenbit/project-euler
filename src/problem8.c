@@ -63,11 +63,11 @@ int INPUT_LENGTH = 1000;
 int SUBNUMBER_NDIGITS = 13;
 int TEST_CASE_SUBNUMBER_NDIGITS = 4;
 
-int problem8_solution() {
+long int problem8_solution() {
   return largest_product_subnumber(INPUT, strlen(INPUT), SUBNUMBER_NDIGITS);
 }
 
-int largest_product_subnumber(char input[],
+long int largest_product_subnumber(char input[],
                               int length_of_input,
                               int subnumber_ndigits) {
   int *moving_window = malloc(subnumber_ndigits * sizeof(int));
@@ -75,8 +75,6 @@ int largest_product_subnumber(char input[],
   long largest_product = 1;
   int largest_product_window[subnumber_ndigits];
 
-  printf("length_of_input: %d\n", length_of_input);
-  printf("subnumber_ndigits: %d\n", subnumber_ndigits);
   for (int i = 0; i < length_of_input - subnumber_ndigits + 1; ++i) {
     for (int j = 0; j < subnumber_ndigits; ++j) {
       moving_window[j] = input[i + j] - '0';
@@ -90,8 +88,6 @@ int largest_product_subnumber(char input[],
         }
     }
   }
-  printf("largest_product_window: ");
-  print_int_array(largest_product_window, subnumber_ndigits);
   return largest_product;
 }
 
@@ -102,8 +98,8 @@ void print_int_array(int int_array[], int int_array_length) {
   printf("\n");
 }
 
-int array_elem_product(int array[], int size_of_array) {
-  int product = 1;
+long int array_elem_product(int array[], int size_of_array) {
+  long int product = 1;
   for (int i = 0; i < size_of_array; ++i) {
     product *=  array[i];
   }

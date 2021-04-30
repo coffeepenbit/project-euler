@@ -3,7 +3,7 @@
 #include "problem8.h"
 
 void test_problem8_solution(void) {
-  TEST_ASSERT_EQUAL(2091059712, problem8_solution());
+  TEST_ASSERT_EQUAL(23514624000, problem8_solution());
 }
 
 void test_problem8_largest_product_subnumber(void) {
