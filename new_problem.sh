@@ -23,6 +23,8 @@ if [ ! -f $problem_c_path ]; then
     echo "" >> $problem_c_path
     echo "#include \"problem$1.h\"" >> $problem_c_path
     echo "" >> $problem_c_path
+    echo "int INPUT = 1;" >> $problem_c_path
+    echo "" >> $problem_c_path
     echo "int problem$1_solution() {" >> $problem_c_path
     echo "  return 0;" >> $problem_c_path
     echo "}" >> $problem_c_path
@@ -39,6 +41,8 @@ if [ ! -f $problem_h_path ]; then
     echo "" >> $problem_h_path
     echo "int problem$1_solution(void);" >> $problem_h_path
     echo "" >> $problem_h_path
+    echo "extern int INPUT;" >> $problem_h_path
+    echo "" >> $problem_h_path
     echo "#endif" >> $problem_h_path
 else
     echo "$problem_h_path already exists."
@@ -52,7 +56,7 @@ if [ ! -f $testproblem_path ]; then
     echo "#include \"problem$1.h\"" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "void test_problem$1_solution(void) {" >> $testproblem_path
-    echo "" >> $testproblem_path
+    echo "  TEST_ASSERT_EQUAL(-1, problem$1_solution());" >> $testproblem_path
     echo "}" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "void setUp(void) {}" >> $testproblem_path
