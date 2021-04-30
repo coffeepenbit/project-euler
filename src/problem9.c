@@ -1,7 +1,7 @@
 /*
  * Project Euler
  *
- * Problem:  9
+ * Problem: 9
  * Title: Special Pythagorean triplet
  * URL: https://projecteuler.net/problem=9
  *
@@ -15,10 +15,43 @@
  * Find the product of a*b*c
  */
 
+#include <math.h>
 #include "problem9.h"
 
-int INPUT = 1;
+unsigned int INPUT = 1000;
 
 int problem9_solution() {
   return 0;
+}
+
+int pythagorean_triple_sum(int target_sum) {
+  unsigned int triplet[3];
+  //
+  // Must be true:
+  // a**2 + b**2 = c**2
+  // a**2 = c**2 - b**2
+  // a = +/- sqrt(c**2 - b**2)
+  // this means |b| <= |c| otherwise a is imaginary
+  //
+  // a + b + c = 1000
+  // a = 1000 - c - b
+  // a**2 = (1000 - c - b)**2
+  //
+  // c**2 - b**2 = a**2
+  //             = (1000 - c - b)**2
+  // Prompt says a, b, c are natural numbers:
+  // this means that a, b, c are positive integers
+  //
+  unsigned int a = 1;
+  unsigned int b = 1;
+  unsigned int c = 1;
+  /* while ((a + b + c < 1000) && (a**2 + b**2 != c**2)) { */
+  /*   c += 1; */
+  /*   b = sqrt(1000**2 + 2*c**2 + 2*b**2 - 2000*c + c*b -2000*b); */
+  /* } */
+  return 1;
+}
+
+long int trinomial_squared(unsigned int a, unsigned int b, unsigned int c) {
+  return pow(a, 2) + pow(b, 2) + pow(c, 2) + 2*a*b + 2*a*c + 2*b*c;
 }
