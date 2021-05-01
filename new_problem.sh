@@ -14,9 +14,9 @@ if [ ! -f $problem_c_path ]; then
     echo "/*" > $problem_c_path
     echo " * Project Euler" >> $problem_c_path
     echo " *" >> $problem_c_path
-    echo " * Problem:  $1" >> $problem_c_path
+    echo " * Problem: $1" >> $problem_c_path
     echo " * Title: " >> $problem_c_path
-    echo " * URL: " >> $problem_c_path
+    echo " * URL: https://projecteuler.net/problem=$1" >> $problem_c_path
     echo " *" >> $problem_c_path
     echo " * Prompt: " >> $problem_c_path
     echo " */" >> $problem_c_path
