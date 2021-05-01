@@ -16,42 +16,28 @@
  */
 
 #include <math.h>
+#include <stdio.h>
 #include "problem9.h"
 
-unsigned int INPUT = 1000;
+unsigned int problem9_solution() {
+  int a = 1;
+  float b = 1;
+  float c = 1;
 
-int problem9_solution() {
-  return 0;
-}
+  for (int i = 1; i <= 500; ++i) {
+    a = i;
+    b = 1.0 * 1000 * (a - 500) / (a - 1000);
+    c = ((a*a - 1000*a + 500000)) / (1000 - a);
 
-int pythagorean_triple_sum(int target_sum) {
-  unsigned int triplet[3];
-  //
-  // Must be true:
-  // a**2 + b**2 = c**2
-  // a**2 = c**2 - b**2
-  // a = +/- sqrt(c**2 - b**2)
-  // this means |b| <= |c| otherwise a is imaginary
-  //
-  // a + b + c = 1000
-  // a = 1000 - c - b
-  // a**2 = (1000 - c - b)**2
-  //
-  // c**2 - b**2 = a**2
-  //             = (1000 - c - b)**2
-  // Prompt says a, b, c are natural numbers:
-  // this means that a, b, c are positive integers
-  //
-  unsigned int a = 1;
-  unsigned int b = 1;
-  unsigned int c = 1;
-  /* while ((a + b + c < 1000) && (a**2 + b**2 != c**2)) { */
-  /*   c += 1; */
-  /*   b = sqrt(1000**2 + 2*c**2 + 2*b**2 - 2000*c + c*b -2000*b); */
-  /* } */
-  return 1;
-}
-
-long int trinomial_squared(unsigned int a, unsigned int b, unsigned int c) {
-  return pow(a, 2) + pow(b, 2) + pow(c, 2) + 2*a*b + 2*a*c + 2*b*c;
+    if (((a + b + c) == 1000)
+        && ((pow(a, 2) + pow(b, 2)) == pow(c, 2))
+        && (a >= 1)
+        && (b >= 1)
+        && (c >= 1)) {
+        printf("a: %d\n", a);
+        printf("b: %d\n", (int)b);
+        printf("c: %f\n", (int)c);
+        return a*b*c;
+    }
+  }
 }
