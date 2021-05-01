@@ -52,15 +52,26 @@ testproblem_path="$test_dir/TestProblem$1.c"
 if [ ! -f $testproblem_path ]; then
     echo "Creating $testproblem_path"
     touch $testproblem_path
+    echo "#include \"<stdio.h>\"" > $testproblem_path
+    echo "#include \"<time.h>\"" > $testproblem_path
     echo "#include \"unity.h\"" > $testproblem_path
     echo "#include \"problem$1.h\"" >> $testproblem_path
+    echo "" >> $testproblem_path
+    echo "clock_t t_begin;" >> $testproblem_path
+    echo "double time_spent;" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "void test_problem$1_solution(void) {" >> $testproblem_path
     echo "  TEST_ASSERT_EQUAL(-1, problem$1_solution());" >> $testproblem_path
     echo "}" >> $testproblem_path
     echo "" >> $testproblem_path
-    echo "void setUp(void) {}" >> $testproblem_path
-    echo "void tearDown(void) {}" >> $testproblem_path
+    echo "void setUp(void) {" >> $testproblem_path
+    echo "  t_begin = clock();" >> $testproblem_path
+    echo "}" >> $testproblem_path
+    echo "" >> $testproblem_path
+    echo "void tearDown(void) {" >> $testproblem_path
+    echo "  time_spent = (double)(clock() - t_begin) / CLOCKS_PER_SEC;" >> $testproblem_path
+    echo "  printf(\"time_spent: %d\n\", time_spent);" >> $testproblem_path
+    echo "}" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "int main(void) {" >> $testproblem_path
     echo "  UNITY_BEGIN();" >> $testproblem_path
