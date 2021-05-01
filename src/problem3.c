@@ -11,12 +11,22 @@
 #include <math.h>
 #include "problem3.h"
 
-int problem3_solution(unsigned long num) {
-  long largest_prime = num;
+unsigned long int INPUT = 600851475143;
+int TEST_INPUT = 13195;
+int TEST_OUTPUT = 29;
 
+int problem3_solution(unsigned long num) {
+  return largest_prime_number_of(num);
+}
+
+int largest_prime_number_of(int num) {
+  // Return largest prime factor of num
+
+  long largest_prime = num;
   for ( long i = ceil(num/2.0); i > 1; --i ) {
     // NOTE: A prime factor is a prime number that is a factor of a number
     if ( (num%i == 0) && (is_prime_number(i)) ) {
+      //
       largest_prime = i;
       break;
     }
