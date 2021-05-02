@@ -19,27 +19,49 @@ const bool IS_PRIME = false;
 const bool IS_UNDETERMINED_PRIMALITY = false;
 const bool IS_NOT_PRIME = true;
 
-int problem3_solution(unsigned long num) {
+int problem3_solution(unsigned long long num) {
   return largest_prime_factor_of(num);
 }
 
-int largest_prime_factor_of(int num) {
+long long int largest_prime_factor_of(long long int num) {
   // Return largest prime factor of num
-  long largest_prime = num;
-  for ( long i = ceil(num/2.0); i > 1; --i ) {
-    // NOTE: A prime factor is a prime number that is a factor of a number
-    if ( (num%i == 0) && (is_prime_number(i)) ) {
-      largest_prime = i;
+  //
+  // That is, the largest factor of num that is prime
+  long long int largest_prime_factor = num;
+  long long int starting_point = floor(num/2.0);
+  long long int *primes = sieve_of_eratosthenes(starting_point);
+
+  long long int length_of_nums = 1;
+  long long int i = 0;
+
+  // printf("starting_point: %d\n", starting_point);
+  // printf("num: %d\n", num);
+  // printf("primes[0]: %d\n", primes[i]);
+  while (primes[i] != -1) {
+    length_of_nums += 1;
+    i += 1;
+    // printf("primes[%d]: %d\n", i, primes[i]);
+  }
+
+  // printf("length_of_nums: %d\n", length_of_nums);
+  for (i = length_of_nums - 2; i >= 0; --i) {
+    printf("i: %ld\n", i);
+    if (num%primes[i] == 0) {
+      largest_prime_factor = primes[i];
+      printf("found largest prime factor, primes[%d]: %d\n", i, primes[i]);
       break;
     }
   }
-  return largest_prime;
+  printf("freeing primes\n");
+  free(primes);
+  printf("largest_prime_factor: %d\n", largest_prime_factor);
+  return largest_prime_factor;
 }
 
-int *sieve_of_eratosthenes(int highest_num) {
+long long int *sieve_of_eratosthenes(long long int highest_num) {
   // Find all prime numbers up to and equaling highest_num
   // https://stackoverflow.com/questions/11656532/returning-an-array-using-c
-  int *primes;
+  long long int *primes;
   int length_of_nums = highest_num;
   bool *nums = malloc(length_of_nums);
   unsigned int number, ith_multiple, multiple;
@@ -80,10 +102,12 @@ int *sieve_of_eratosthenes(int highest_num) {
     }
   }
   primes[nprimes] = -1;
+  //free(nums);
+
   return primes;
 }
 
-bool is_prime_number(unsigned long num_to_test) {
+bool is_prime_number(unsigned long long num_to_test) {
   /* Return true if num_to_test is a prime number
    *
    * Worst case scenario runs at sqrt(n) time

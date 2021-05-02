@@ -10,6 +10,8 @@
  * Find the sum of all the primes below two million.
  */
 
+#include <stdbool.h>
+#include <stdio.h>
 #include "problem10.h"
 
 int INPUT = 2000000;
@@ -22,12 +24,16 @@ int problem10_solution() {
 
 long int sum_of_primes_below(int below_num) {
   long int sum = 0;
-  unsigned int ith_prime = 1;
+  unsigned int ith_prime;
   unsigned int i = 1;
-  while (ith_prime < below_num) {
+  while (true) {
     ith_prime = nth_prime(i);
-    sum += ith_prime;
-    i += 1;
+    if (ith_prime < below_num) {
+      sum += ith_prime;
+      i += 1;
+    } else {
+      break;
+    }
   }
   return sum;
 }

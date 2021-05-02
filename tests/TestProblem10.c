@@ -7,6 +7,7 @@ void test_problem10_solution(void) {
 
 void test_problem10_sum_of_primes_below(void) {
   TEST_ASSERT_EQUAL(TEST_OUTPUT, sum_of_primes_below(TEST_INPUT));
+  TEST_ASSERT_EQUAL(1, sum_of_primes_below(INPUT));
 }
 
 void setUp(void) {}
