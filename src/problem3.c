@@ -12,15 +12,15 @@
 #include <math.h>
 #include "problem3.h"
 
-unsigned long int INPUT = 600851475143;
+long long int INPUT = 600851475143;
 int TEST_INPUT = 13195;
 int TEST_OUTPUT = 29;
 const bool IS_PRIME = false;
 const bool IS_UNDETERMINED_PRIMALITY = false;
 const bool IS_NOT_PRIME = true;
 
-int problem3_solution(unsigned long long num) {
-  return largest_prime_factor_of(num);
+int problem3_solution(void) {
+  return largest_prime_factor_of(INPUT);
 }
 
 long long int largest_prime_factor_of(long long int num) {
@@ -29,23 +29,24 @@ long long int largest_prime_factor_of(long long int num) {
   // That is, the largest factor of num that is prime
   long long int largest_prime_factor = num;
   long long int starting_point = floor(num/2.0);
+  printf("Calling sieve\n");
   long long int *primes = sieve_of_eratosthenes(starting_point);
-
+  printf("Sieve done\n");
   long long int length_of_nums = 1;
   long long int i = 0;
 
-  // printf("starting_point: %d\n", starting_point);
-  // printf("num: %d\n", num);
-  // printf("primes[0]: %d\n", primes[i]);
+  printf("starting_point: %d\n", starting_point);
+  printf("num: %d\n", num);
+  printf("primes[0]: %d\n", primes[i]);
   while (primes[i] != -1) {
     length_of_nums += 1;
     i += 1;
-    // printf("primes[%d]: %d\n", i, primes[i]);
+    //printf("primes[%d]: %lld\n", i, primes[i]);
   }
 
-  // printf("length_of_nums: %d\n", length_of_nums);
+  printf("length_of_nums: %d\n", length_of_nums);
   for (i = length_of_nums - 2; i >= 0; --i) {
-    printf("i: %ld\n", i);
+    /* printf("i: %ld\n", i); */
     if (num%primes[i] == 0) {
       largest_prime_factor = primes[i];
       printf("found largest prime factor, primes[%d]: %d\n", i, primes[i]);
@@ -60,24 +61,37 @@ long long int largest_prime_factor_of(long long int num) {
 
 long long int *sieve_of_eratosthenes(long long int highest_num) {
   // Find all prime numbers up to and equaling highest_num
-  // https://stackoverflow.com/questions/11656532/returning-an-array-using-c
   long long int *primes;
-  int length_of_nums = highest_num;
-  bool *nums = malloc(length_of_nums);
+  long long int length_of_nums = highest_num;
+  long long int malloc_size = length_of_nums * sizeof(bool);
+  printf("malloc on nums\n");
+  // FIXME segmentation fault occurs here
+  // when highest_num is large
+  //
+  // malloc expects size to be in BYTES;
+  // sizeof also returns bytes
+  printf("setting malloc number of elems: %lld\n", highest_num);
+  printf("sizeof(bool): %zu\n", sizeof(bool));
+  printf("sizeof(char): %zu\n", sizeof(char));
+  printf("malloc size:%lld\n", length_of_nums * sizeof(bool));
+  bool *nums = malloc(malloc_size);
   unsigned int number, ith_multiple, multiple;
 
   // initialize nums
-  for (int i = 0; i < length_of_nums; ++i) {
+  printf("initializing nums\n");
+  /* printf("nums[0]: %d", nums[0]); */
+  /* nums[0] = IS_NOT_PRIME; // 1 is not prime */
+  for (int i = 1; i < length_of_nums; ++i) {
+    printf("setting nums[%d]", i);
     nums[i] = IS_UNDETERMINED_PRIMALITY;
   }
+  printf("done nitializing nums\n");
 
-  nums[0] = IS_NOT_PRIME;
-  // Number = 1 corresponds to number value 2.
-  // We start with number value 2 because 1 is not prime.
   unsigned int number_ind = 1;
   unsigned int nprimes = 0;
   while (number_ind < length_of_nums) {
     if (nums[number_ind] == IS_UNDETERMINED_PRIMALITY) {
+      // Number = 1 corresponds to number value 2.
       number = number_ind + 1;
       nprimes += 1;
       ith_multiple = 2;
@@ -93,7 +107,8 @@ long long int *sieve_of_eratosthenes(long long int highest_num) {
     number_ind += 1;
   }
 
-  primes = malloc((nprimes + 1) * sizeof(int));
+  // printf("setting primes malloc");
+  primes = malloc((nprimes + 1) * sizeof(long long int));
   int ith_prime = 0;
   for (int i = 0; i < length_of_nums; ++i) {
     if (nums[i] == IS_PRIME) {
@@ -101,8 +116,8 @@ long long int *sieve_of_eratosthenes(long long int highest_num) {
       ith_prime += 1;
     }
   }
+  free(nums);
   primes[nprimes] = -1;
-  //free(nums);
 
   return primes;
 }
