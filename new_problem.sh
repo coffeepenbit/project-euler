@@ -11,7 +11,7 @@ problem_c_path="$src_dir/problem$1.c"
 if [ ! -f $problem_c_path ]; then
     echo "Creating $problem_c_path"
     touch $problem_c_path
-    echo "/*" > $problem_c_path
+    echo "/*" >> $problem_c_path
     echo " * Project Euler" >> $problem_c_path
     echo " *" >> $problem_c_path
     echo " * Problem: $1" >> $problem_c_path
@@ -36,7 +36,7 @@ problem_h_path="$h_dir/problem$1.h"
 if [ ! -f $problem_h_path ]; then
     echo "Creating $problem_h_path"
     touch $problem_h_path
-    echo "#ifndef PROBLEM$1_H_INCLUDED" > $problem_h_path
+    echo "#ifndef PROBLEM$1_H_INCLUDED" >> $problem_h_path
     echo "#define PROBLEM$1_H_INCLUDED" >> $problem_h_path
     echo "" >> $problem_h_path
     echo "int problem$1_solution(void);" >> $problem_h_path
@@ -52,9 +52,9 @@ testproblem_path="$test_dir/TestProblem$1.c"
 if [ ! -f $testproblem_path ]; then
     echo "Creating $testproblem_path"
     touch $testproblem_path
-    echo "#include \"<stdio.h>\"" > $testproblem_path
-    echo "#include \"<time.h>\"" > $testproblem_path
-    echo "#include \"unity.h\"" > $testproblem_path
+    echo "#include <stdio.h>" >> $testproblem_path
+    echo "#include <time.h>" >> $testproblem_path
+    echo "#include \"unity.h\"" >> $testproblem_path
     echo "#include \"problem$1.h\"" >> $testproblem_path
     echo "" >> $testproblem_path
     echo "clock_t t_begin;" >> $testproblem_path
