@@ -15,14 +15,13 @@ void test_problem3_solution(void) {
 }
 
 void test_problem3_largest_prime_factor_of(void) {
-  //largest_prime_factor_of(INPUT);
   TEST_ASSERT_EQUAL(2, largest_prime_factor_of(4));
   TEST_ASSERT_EQUAL(3, largest_prime_factor_of(6));
   TEST_ASSERT_EQUAL(7, largest_prime_factor_of(7));
   TEST_ASSERT_EQUAL(13, largest_prime_factor_of(13));
-  TEST_ASSERT_EQUAL(TEST_OUTPUT, largest_prime_factor_of(TEST_INPUT));
+  TEST_ASSERT_EQUAL(PROBLEM3_TEST_OUTPUT, largest_prime_factor_of(PROBLEM3_TEST_INPUT));
   TEST_ASSERT_EQUAL(5, largest_prime_factor_of(2000000));
-  TEST_ASSERT_EQUAL(6857, largest_prime_factor_of(INPUT));
+  TEST_ASSERT_EQUAL(6857, largest_prime_factor_of(PROBLEM3_INPUT));
   printf("\n");
 }
 
@@ -62,9 +61,9 @@ void test_problem3_sieve_of_eratosthenes__output(void) {
   }
   free(nums);
 
-  nums = sieve_of_eratosthenes(floor(sqrt(INPUT)));
+  nums = sieve_of_eratosthenes(floor(sqrt(PROBLEM3_INPUT)));
   if (nums[0] == 1) {
-    printf("Error: nums[0] == 1 when input = %ld\n", (long int)floor(sqrt(INPUT)));
+    printf("Error: nums[0] == 1 when input = %ld\n", (long int)floor(sqrt(PROBLEM3_INPUT)));
     TEST_FAIL();
   }
   free(nums);
@@ -81,8 +80,8 @@ void test_problem3_sieve_of_eratosthenes__performance(void) {
   nums = sieve_of_eratosthenes(100);
   free(nums);
 
-  printf("Running sieve on %ld\n", (long int)floor(sqrt(INPUT)));
-  nums = sieve_of_eratosthenes(sqrt(INPUT));
+  printf("Running sieve on %ld\n", (long int)floor(sqrt(PROBLEM3_INPUT)));
+  nums = sieve_of_eratosthenes(sqrt(PROBLEM3_INPUT));
   free(nums);
   printf("\n");
 }

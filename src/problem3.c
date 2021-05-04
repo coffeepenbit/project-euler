@@ -12,15 +12,15 @@
 #include <math.h>
 #include "problem3.h"
 
-const long long int INPUT = 600851475143;
-const int TEST_INPUT = 13195;
-const int TEST_OUTPUT = 29;
+const long long int PROBLEM3_INPUT = 600851475143;
+const int PROBLEM3_TEST_INPUT = 13195;
+const int PROBLEM3_TEST_OUTPUT = 29;
 const bool IS_PRIME = false;
 const bool IS_UNDETERMINED_PRIMALITY = false;
 const bool IS_NOT_PRIME = true;
 
 int problem3_solution(void) {
-  return largest_prime_factor_of(INPUT);
+  return largest_prime_factor_of(PROBLEM3_INPUT);
 }
 
 long long int largest_prime_factor_of(long long int num) {

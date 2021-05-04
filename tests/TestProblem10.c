@@ -2,12 +2,12 @@
 #include "problem10.h"
 
 void test_problem10_solution(void) {
-  TEST_ASSERT_EQUAL(-1, problem10_solution());
+  TEST_ASSERT_EQUAL(142913828922, problem10_solution());
 }
 
 void test_problem10_sum_of_primes_below(void) {
-  TEST_ASSERT_EQUAL(TEST_OUTPUT, sum_of_primes_below(TEST_INPUT));
-  TEST_ASSERT_EQUAL(1, sum_of_primes_below(INPUT));
+  TEST_ASSERT_EQUAL(PROBLEM10_TEST_OUTPUT, sum_of_primes_below(PROBLEM10_TEST_INPUT));
+  TEST_ASSERT_EQUAL(142913828922, sum_of_primes_below(PROBLEM10_INPUT));
 }
 
 void setUp(void) {}

@@ -12,28 +12,25 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include "problem3.h"
 #include "problem10.h"
 
-int INPUT = 2000000;
-int TEST_INPUT = 10;
-int TEST_OUTPUT = 17;
+int PROBLEM10_INPUT = 2000000;
+int PROBLEM10_TEST_INPUT = 10;
+int PROBLEM10_TEST_OUTPUT = 17;
 
-int problem10_solution() {
-  return 0;
+long int problem10_solution() {
+  return sum_of_primes_below(PROBLEM10_INPUT);
 }
 
 long int sum_of_primes_below(int below_num) {
-  long int sum = 0;
-  unsigned int ith_prime;
-  unsigned int i = 1;
-  while (true) {
-    ith_prime = nth_prime(i);
-    if (ith_prime < below_num) {
-      sum += ith_prime;
-      i += 1;
-    } else {
-      break;
-    }
+  long long int *primes = sieve_of_eratosthenes(below_num);
+
+  long int prime_ind = 0;
+  long long int sum = 0;
+  while (primes[prime_ind] != -1) {
+    sum += primes[prime_ind];
+    prime_ind += 1;
   }
   return sum;
 }

@@ -3,9 +3,9 @@
 
 #include <stdbool.h>
 
-extern const long long int INPUT;
-extern const int TEST_INPUT;
-extern const int TEST_OUTPUT;
+extern const long long int PROBLEM3_INPUT;
+extern const int PROBLEM3_TEST_INPUT;
+extern const int PROBLEM3_TEST_OUTPUT;
 
 int problem3_solution(void);
 long long int largest_prime_factor_of(long long int num);

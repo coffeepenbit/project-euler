@@ -23,7 +23,7 @@ if [ ! -f $problem_c_path ]; then
     echo "" >> $problem_c_path
     echo "#include \"problem$1.h\"" >> $problem_c_path
     echo "" >> $problem_c_path
-    echo "int INPUT = 1;" >> $problem_c_path
+    echo "int PROBLEM$1_INPUT = 1;" >> $problem_c_path
     echo "" >> $problem_c_path
     echo "int problem$1_solution() {" >> $problem_c_path
     echo "  return 0;" >> $problem_c_path
@@ -41,7 +41,7 @@ if [ ! -f $problem_h_path ]; then
     echo "" >> $problem_h_path
     echo "int problem$1_solution(void);" >> $problem_h_path
     echo "" >> $problem_h_path
-    echo "extern int INPUT;" >> $problem_h_path
+    echo "extern int PROBLEM$1_INPUT;" >> $problem_h_path
     echo "" >> $problem_h_path
     echo "#endif" >> $problem_h_path
 else
