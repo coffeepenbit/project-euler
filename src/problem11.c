@@ -51,8 +51,8 @@ long int problem11_solution() {
 }
 
 long int largest_nproduct_in_array(
-      int array[][],
-      unsigned inta array_length,
+      int array[20][20],
+      unsigned int array_length,
       unsigned int product_nfactors
   ) {
   int largest_nproduct = 0;
@@ -71,21 +71,21 @@ long int largest_nproduct_in_array(
       for (int product_ind = 0; product_ind < product_nfactors; ++product_ind) {
         nproduct *= array[row_ind + product_ind][col_ind];
       }
-      largest_nproduct = max(nproduct, largest_nproduct);
+      largest_nproduct = int_max(nproduct, largest_nproduct);
 
       // Down-right product
       nproduct = 1;
       for (int product_ind = 0; product_ind < product_nfactors; ++product_ind) {
         nproduct *= array[row_ind + product_ind + row_ind][col_ind + row_ind];
       }
-      largest_nproduct = max(nproduct, largest_nproduct);
+      largest_nproduct = int_max(nproduct, largest_nproduct);
 
       // Down-left product
       nproduct = 1;
       for (int product_ind = 0; product_ind < product_nfactors; ++product_ind) {
         nproduct *= array[row_ind + product_ind][col_ind];
       }
-      largest_nproduct = max(nproduct, largest_nproduct);
+      largest_nproduct = int_max(nproduct, largest_nproduct);
     }
   }
 }
